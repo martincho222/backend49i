@@ -9,9 +9,10 @@ router.get("/user", getAllUsers)
 router.get("/user/:id", getUserById)
 router.delete("/user/:id", deleteUser)
 router.put("/user/:id", updateUser)
-router.post("/registrar", register)
-router.post("/login", login)
 router.put('/admin/:id', changeToAdmin)
+router.post("/user/registrar", register)
+router.post("/user/login", login)
+
 
 //categorias routes
 router.get("/categorias", getAllCategories)
