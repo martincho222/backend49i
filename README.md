@@ -17,6 +17,7 @@ mongodb+srv://<username>:<password>@cluster49i.mjdkqqj.mongodb.net/
 ### Instalar
 
 ```
+git clone https://github.com/martincho222/backend49i.git
 cd backend-cursos
 npm install
 ```
