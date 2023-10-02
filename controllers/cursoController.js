@@ -111,10 +111,18 @@ const deleteCourse = async (req, res) => {
 
 const updateCourse = async (req, res) => {
     const { id } = req.params;
-    const { title, imagen, detalle, video, mentor, img_mentor, categoria } = req.body;
-
+    const { title, detalle, video, mentor, img_mentor, categoria } = req.body;
+    console.log(req.params);
+    console.log(req.body);
     try {
-        const curso = await Curso.findByIdAndUpdate(id, req.body, {new: true});
+        const curso = await Curso.findByIdAndUpdate(id, {
+            title,
+            detalle,
+            video,
+            mentor,
+            img_mentor,
+            categoria
+        }, {new: true});
         if(!curso) {
             return res.status(404).json({
                 mensaje: "Curso no encontrado",
@@ -127,6 +135,7 @@ const updateCourse = async (req, res) => {
             curso
         })
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
             mensaje: "Hubo un error, intentelo mas tarde",
             status: 500,

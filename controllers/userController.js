@@ -2,6 +2,7 @@ const User = require("../models/userSchema");
 const { encryptPassword, comparePassword } = require("../utils/passwordHandler");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const sendEmail = require("../utils/emailHandler");
 
 const getAllUsers = async (req, res) => {
 const users = await User.find();
@@ -71,6 +72,7 @@ const register = async (req, res) => {
         password: encryptPassword(password)
        });
        await newUser.save();
+       sendEmail(newUser)
        res.status(201).json({
         mensaje: "Usuario creado exitosamente",
         status: 201,
